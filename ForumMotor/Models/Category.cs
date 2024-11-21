@@ -9,6 +9,6 @@
         public virtual string ForumUserId { get; set; }
 
         public virtual ForumUser User { get; set; }
-        //public ICollection<Topic> Topics { get; set; }
+        public ICollection<Topic> Topics { get; set; }
     }
 }

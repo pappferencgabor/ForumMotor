@@ -11,6 +11,6 @@
         public virtual Category Category { get; set; }
         public virtual ForumUser User { get; set; }
 
-        //public ICollection<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
     }
 }

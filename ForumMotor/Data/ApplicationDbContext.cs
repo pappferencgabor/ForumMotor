@@ -1,6 +1,7 @@
 ﻿using ForumMotor.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace ForumMotor.Data
 {
@@ -10,5 +11,8 @@ namespace ForumMotor.Data
             : base(options)
         {
         }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }
