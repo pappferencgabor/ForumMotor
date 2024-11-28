@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ForumMotor.Data;
 using ForumMotor.Models;
 
-namespace ForumMotor.Pages
+namespace ForumMotor.Pages.Posts
 {
     public class CreateModel : PageModel
     {
@@ -21,17 +21,18 @@ namespace ForumMotor.Pages
 
         public IActionResult OnGet()
         {
+        ViewData["TopicId"] = new SelectList(_context.Topics, "Id", "Id");
         ViewData["ForumUserId"] = new SelectList(_context.Users, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public Category Category { get; set; } = default!;
+        public Post Post { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            _context.Categories.Add(Category);
+            _context.Posts.Add(Post);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
