@@ -48,6 +48,8 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapControllers();
+
 app.UseCors();
 
 app.Run();
