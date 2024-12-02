@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ForumMotor.Data;
 using ForumMotor.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ForumMotor.Pages
 {
     public class CreateModel : PageModel
     {
         private readonly ForumMotor.Data.ApplicationDbContext _context;
+        private readonly UserManager<ForumUser> _userManager;
 
-        public CreateModel(ForumMotor.Data.ApplicationDbContext context)
+        public CreateModel(ForumMotor.Data.ApplicationDbContext context, UserManager<ForumUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult OnGet()
@@ -31,6 +34,8 @@ namespace ForumMotor.Pages
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Category.CreateDate = DateTime.Now;
+            Category.ForumUserId = _userManager.GetUserId(User);
             _context.Categories.Add(Category);
             await _context.SaveChangesAsync();
 

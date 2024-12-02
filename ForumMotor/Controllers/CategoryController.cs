@@ -1,5 +1,6 @@
 ﻿using ForumMotor.Data;
 using ForumMotor.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,13 @@ namespace ForumMotor.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        //private readonly UserManager<ForumUser> _userManager;
+
+        //public CategoryController(ApplicationDbContext context, UserManager<ForumUser> userManager)
+        //{
+        //    _context = context;
+        //    _userManager = userManager;
+        //}
 
         public CategoryController(ApplicationDbContext context)
         {
